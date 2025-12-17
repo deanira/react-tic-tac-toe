@@ -1,7 +1,11 @@
 import { useState } from "react";
 
 function Square({ value, onSquareClick }) {
-  return <button className="square" onClick={onSquareClick}>{value}</button>
+  return (
+    <button className="square" onClick={onSquareClick}>
+        {value}
+    </button>
+  )
 }
 
 function Board({xIsNext, squares, onPlay}) {
@@ -59,7 +63,7 @@ function calculateWinner(squares) {
     [0, 4, 8],
     [2, 4, 6],
   ];
-  for (let i = 0; i = lines.length; i++) {
+  for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a];
@@ -81,12 +85,10 @@ export default function Game() {
   return (
     <div className="game">
       <div className="game-board">
-        <Board xIsNext={xIsNext} squares={squares} onPlay={handlePlay}/>
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
-        <ol>
-
-        </ol>
+        <ol>{/*TODO*/}</ol>
       </div>
     </div>
   );
